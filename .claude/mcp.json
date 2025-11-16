@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "locus": {
+      "type": "http",
+      "url": "https://mcp.paywithlocus.com/mcp",
+      "headers": {
+        "Authorization": "Bearer locus_dev_Zk4ETpG6vu9NIOYQ-1HtMyZyGqEFqdzB"
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Deep Research Agent</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="research-app">
+      <aside class="seller-sidebar">
+        <header>
+          <h1>Seller Threads</h1>
+          <p class="budget" id="budget-indicator">Budget: $0.20 • Spent: $0.00</p>
+          <button id="start-btn">Start Research</button>
+        </header>
+        <ul id="seller-list" class="seller-list"></ul>
+      </aside>
+
+      <section class="coordinator-panel">
+        <h2>Coordinator Feed</h2>
+        <div id="coordinator-feed" class="feed"></div>
+      </section>
+
+      <section class="summary-panel">
+        <h2>Feasibility Summary</h2>
+        <div id="summary-content" class="summary-content">
+          <p>Start the research session to see findings.</p>
+        </div>
+      </section>
+    </main>
+
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <button id="close-modal" class="close-btn">×</button>
+        <h3 id="modal-title"></h3>
+        <div id="modal-body" class="modal-body"></div>
+      </div>
+    </div>
+
+    <div id="start-modal" class="start-modal hidden">
+      <div class="start-modal__content">
+        <h3>Start Research Session</h3>
+        <label>
+          Research Question
+          <textarea id="research-question"></textarea>
+        </label>
+        <label>
+          Budget (USDC)
+          <input type="number" step="0.01" min="0.01" id="research-budget" />
+        </label>
+        <div class="start-modal__actions">
+          <button id="cancel-start" type="button">Cancel</button>
+          <button id="confirm-start" type="button" class="primary">Start Research</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>

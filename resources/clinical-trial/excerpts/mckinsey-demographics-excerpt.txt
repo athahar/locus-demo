@@ -1,0 +1,394 @@
+================================================================================
+MCKINSEY & COMPANY HEALTHCARE SYSTEMS & SERVICES PRACTICE
+Patient Population Demographics Analysis: Top 50 U.S. Clinical Trial Sites
+2024 EDITION - EXECUTIVE SUMMARY
+================================================================================
+
+REPORT METADATA
+---------------
+Published: March 2024
+Authors: Dr. James Chen (Senior Partner), Dr. Lisa Patel (Associate Partner)
+Data Period: 2019-2023 (5-year patient volume analysis)
+Methodology: Proprietary analysis of hospital discharge records (HCUP), SEER
+cancer registry data, insurance claims (15.2M oncology patients), and site
+infrastructure assessments
+
+SCOPE: This Executive Summary provides top 10 site rankings and detailed
+profiles for Memorial Sloan Kettering Cancer Center and MD Anderson Cancer
+Center. Full report (62 pages, $0.04) includes all 50 sites with cancer
+subtype-specific breakdowns.
+
+================================================================================
+EXECUTIVE SUMMARY: KEY FINDINGS
+================================================================================
+
+OVERVIEW
+--------
+Our analysis evaluated 50 major U.S. academic medical centers and NCI-designated
+cancer centers across six dimensions:
+  1. Patient Volume (cancer-specific annual case load)
+  2. Demographic Diversity (racial/ethnic representation, age distribution)
+  3. Geographic Accessibility (catchment area, drive time analysis)
+  4. Trial Infrastructure (research coordinators, beds, imaging capacity)
+  5. Socioeconomic Mix (insurance coverage, income levels)
+  6. Disease Specialization (oncology sub-specialties, tumor boards)
+
+Each site received a composite "Trial Suitability Score" (0-100 scale) based
+on weighted criteria optimized for Phase III oncology trials.
+
+TOP INSIGHTS
+------------
+• The top 10 sites account for 38% of all Phase III oncology trial enrollment
+  in the U.S. despite representing only 12% of cancer centers
+• Sites in the Northeast and Texas have 2.3x higher patient density than
+  national average for triple-negative breast cancer specifically
+• Diversity scores vary dramatically: best sites have 45%+ racial/ethnic
+  minority representation vs. worst at <10%
+• Catchment area is critical: sites with >5M population within 90-min drive
+  enroll 60% faster than those with <2M population access
+
+================================================================================
+TOP 10 SITES RANKING TABLE
+================================================================================
+
+Rank | Institution                          | City          | Trial Score | Patient  | Diversity
+     |                                      |               | (0-100)     | Volume/Yr| Index*
+-----|--------------------------------------|---------------|-------------|----------|----------
+  1  | Memorial Sloan Kettering Cancer Ctr  | New York, NY  |    96       | 12,400   |   42%
+  2  | MD Anderson Cancer Center            | Houston, TX   |    94       | 14,200   |   51%
+  3  | Dana-Farber Cancer Institute         | Boston, MA    |    92       | 8,900    |   35%
+  4  | Johns Hopkins Kimmel Cancer Center   | Baltimore, MD |    91       | 7,600    |   48%
+  5  | Mayo Clinic Cancer Center            | Rochester, MN |    89       | 9,100    |   28%
+  6  | UCSF Helen Diller Comprehensive CC   | San Fran., CA |    88       | 6,800    |   54%
+  7  | Univ. of Michigan Rogel Cancer Ctr   | Ann Arbor, MI |    87       | 5,900    |   31%
+  8  | Duke Cancer Institute                | Durham, NC    |    86       | 5,400    |   39%
+  9  | UPenn Abramson Cancer Center         | Phila., PA    |    85       | 6,200    |   44%
+ 10  | Stanford Cancer Institute            | Palo Alto, CA |    84       | 5,100    |   38%
+
+*Diversity Index: % of patients from racial/ethnic minority groups
+Patient Volume: Annual new cancer diagnoses across all types (2023 data)
+
+ADDITIONAL METRICS (Top 10 Sites)
+----------------------------------
+• Average catchment area: 6.8M people within 90-minute drive time
+• Average research infrastructure: 42 dedicated research coordinators,
+  18 clinical trial beds, 8 tumor boards per week
+• Insurance mix: 62% commercial, 28% Medicare, 8% Medicaid, 2% uninsured
+• Trial experience: Average 85 active oncology trials per site (range: 52-127)
+
+================================================================================
+DETAILED PROFILE #1: MEMORIAL SLOAN KETTERING CANCER CENTER
+================================================================================
+
+LOCATION: New York, NY (Manhattan, Upper East Side)
+
+OVERALL TRIAL SUITABILITY SCORE: 96/100
+  - Patient Volume: 98/100
+  - Diversity: 85/100
+  - Geographic Access: 96/100
+  - Infrastructure: 100/100
+  - Socioeconomic Mix: 92/100
+
+PATIENT POPULATION OVERVIEW (2023 Data)
+----------------------------------------
+Total Annual Cancer Diagnoses: 12,400 patients
+Oncology Specializations: All solid tumors and hematologic malignancies
+
+BREAST CANCER SPECIFIC DATA:
+  • Annual Breast Cancer Diagnoses: 2,840 patients
+    - Stage II: 920 patients (32.4%)
+    - Stage III: 480 patients (16.9%)
+  • Triple-Negative Breast Cancer (TNBC): 650 patients/year (22.9% of all BC)
+    - Stage II TNBC: 210 patients
+    - Stage III TNBC: 115 patients
+  • Age Distribution (TNBC patients):
+    - Under 40: 12%
+    - 40-55: 38%
+    - 56-65: 31%
+    - Over 65: 19%
+
+DEMOGRAPHIC DIVERSITY (All Cancer Types)
+-----------------------------------------
+Racial/Ethnic Breakdown:
+  • White (Non-Hispanic): 58%
+  • Black/African American: 18%
+  • Hispanic/Latino: 15%
+  • Asian/Pacific Islander: 7%
+  • Other/Multiracial: 2%
+
+Income Distribution (ZIP code analysis):
+  • High income (>$100K median household): 42%
+  • Middle income ($50K-$100K): 38%
+  • Low income (<$50K): 20%
+
+GEOGRAPHIC CATCHMENT AREA
+--------------------------
+Primary Service Area: New York City (5 boroughs) + Westchester, Nassau,
+  Suffolk counties
+Population within 60-minute drive: 12.8 million
+Population within 90-minute drive: 18.4 million
+
+Transportation Accessibility:
+  • Subway access: Yes (Q, 4, 5, 6 lines within 3 blocks)
+  • Patient parking: 1,200 spaces on-site
+  • Shuttle services: 8 routes from outer boroughs
+  • Public transit usage by patients: 68% (highest among all sites analyzed)
+
+TRIAL INFRASTRUCTURE
+--------------------
+Active Oncology Trials (as of March 2024): 127 (52 Phase III)
+Research Staff:
+  • Clinical Research Coordinators: 74
+  • Research Nurses: 38
+  • Data Managers: 22
+  • Regulatory Specialists: 15
+
+Facilities:
+  • Dedicated Clinical Research Center: Yes (12,000 sq ft)
+  • Clinical Trial Beds: 28
+  • Infusion chairs (for IV therapy trials): 45
+  • PET/CT scanners: 6 (short wait times)
+  • MRI machines: 11
+
+INSURANCE & SOCIOECONOMIC FACTORS
+----------------------------------
+Insurance Coverage Mix:
+  • Commercial/Private: 64%
+  • Medicare: 27%
+  • Medicaid: 7%
+  • Uninsured/Self-pay: 2%
+
+Financial Assistance Programs: Yes, robust ($12M annual budget for patient
+  assistance, including transportation, lodging, copay support)
+
+CLINICAL TRIAL PERFORMANCE INDICATORS (based on site-reported data)
+--------------------------------------------------------------------
+Historical Enrollment Success Rate: 89% of trials meet recruitment goals
+Average Time to First Patient: 42 days from site activation
+Patient Retention: 87% of enrolled patients complete study visits
+Referral Network: 820+ community oncologists in referral network
+
+KEY STRENGTHS FOR TRIAL SITE SELECTION
+---------------------------------------
+✓ Highest volume of TNBC patients in our analysis (650/year)
+✓ Exceptional diversity (42% racial/ethnic minorities)
+✓ World-class infrastructure (74 research coordinators)
+✓ Massive catchment area (18.4M within 90 minutes)
+✓ Strong public transit access (important for patient retention)
+✓ Deep experience with Phase III trials (52 currently active)
+
+POTENTIAL CONSIDERATIONS
+-------------------------
+⚠ High commercial insurance rate may skew patient population slightly upscale
+⚠ Very competitive trial environment (127 active trials = potential patient
+   competition for enrollment)
+⚠ Cost of living in NYC area may affect patient retention if trial requires
+   frequent visits
+
+RECOMMENDED USE CASES
+---------------------
+Ideal for:
+  • Trials requiring high patient volume and rapid enrollment
+  • Studies needing diverse patient populations for FDA approval
+  • Complex trials requiring sophisticated infrastructure
+  • Northeast region anchor site
+
+================================================================================
+DETAILED PROFILE #2: MD ANDERSON CANCER CENTER
+================================================================================
+
+LOCATION: Houston, TX (Texas Medical Center)
+
+OVERALL TRIAL SUITABILITY SCORE: 94/100
+  - Patient Volume: 100/100 (highest in nation)
+  - Diversity: 97/100 (highest Hispanic representation)
+  - Geographic Access: 88/100
+  - Infrastructure: 98/100
+  - Socioeconomic Mix: 87/100
+
+PATIENT POPULATION OVERVIEW (2023 Data)
+----------------------------------------
+Total Annual Cancer Diagnoses: 14,200 patients (highest volume in U.S.)
+Oncology Specializations: All solid tumors and hematologic malignancies
+
+BREAST CANCER SPECIFIC DATA:
+  • Annual Breast Cancer Diagnoses: 3,240 patients
+    - Stage II: 1,050 patients (32.4%)
+    - Stage III: 580 patients (17.9%)
+  • Triple-Negative Breast Cancer (TNBC): 780 patients/year (24.1% of all BC)
+    - Stage II TNBC: 250 patients
+    - Stage III TNBC: 140 patients
+  • Age Distribution (TNBC patients):
+    - Under 40: 15%
+    - 40-55: 41%
+    - 56-65: 28%
+    - Over 65: 16%
+
+DEMOGRAPHIC DIVERSITY (All Cancer Types)
+-----------------------------------------
+Racial/Ethnic Breakdown:
+  • White (Non-Hispanic): 49%
+  • Hispanic/Latino: 28% (highest among top 10 sites)
+  • Black/African American: 14%
+  • Asian/Pacific Islander: 7%
+  • Other/Multiracial: 2%
+
+Income Distribution (ZIP code analysis):
+  • High income (>$100K median household): 35%
+  • Middle income ($50K-$100K): 42%
+  • Low income (<$50K): 23%
+
+GEOGRAPHIC CATCHMENT AREA
+--------------------------
+Primary Service Area: Greater Houston metro + South/Central Texas + Louisiana
+Population within 60-minute drive: 7.6 million
+Population within 90-minute drive: 9.8 million
+National/International Draw: 18% of patients travel from outside TX
+
+Transportation Accessibility:
+  • Metro access: Light rail to Medical Center
+  • Patient parking: 3,400 spaces across multiple garages
+  • Shuttle services: 12 routes from Houston suburbs
+  • Airport proximity: Houston Hobby (15 min), Bush Intercontinental (35 min)
+  • On-site lodging: Yes, 8 partner hotels + patient housing
+
+TRIAL INFRASTRUCTURE
+--------------------
+Active Oncology Trials (as of March 2024): 118 (48 Phase III)
+Research Staff:
+  • Clinical Research Coordinators: 82 (highest in nation)
+  • Research Nurses: 44
+  • Data Managers: 28
+  • Regulatory Specialists: 19
+
+Facilities:
+  • Dedicated Clinical Research Center: Yes (18,000 sq ft)
+  • Clinical Trial Beds: 32
+  • Infusion chairs (for IV therapy trials): 68
+  • PET/CT scanners: 8
+  • MRI machines: 14
+
+INSURANCE & SOCIOECONOMIC FACTORS
+----------------------------------
+Insurance Coverage Mix:
+  • Commercial/Private: 58%
+  • Medicare: 29%
+  • Medicaid: 11%
+  • Uninsured/Self-pay: 2%
+
+Financial Assistance Programs: Yes, extensive ($18M annual budget, includes
+  travel assistance for out-of-state patients, Spanish-language support)
+
+CLINICAL TRIAL PERFORMANCE INDICATORS
+--------------------------------------
+Historical Enrollment Success Rate: 92% of trials meet recruitment goals
+Average Time to First Patient: 38 days from site activation (fastest in top 10)
+Patient Retention: 84% of enrolled patients complete study visits
+Referral Network: 1,200+ community oncologists across Texas and Louisiana
+
+KEY STRENGTHS FOR TRIAL SITE SELECTION
+---------------------------------------
+✓ Highest patient volume in the nation (14,200 annual diagnoses)
+✓ Exceptional diversity, especially Hispanic representation (28%)
+✓ Largest research coordinator staff (82 FTEs)
+✓ Fastest time to first patient enrollment (38 days average)
+✓ Strong infrastructure for complex trials
+✓ National patient draw (18% from outside Texas)
+
+POTENTIAL CONSIDERATIONS
+-------------------------
+⚠ Lower public transit usage than Northeast sites (car-dependent city)
+⚠ Higher uninsured rate (2%) than some top sites
+⚠ Summer heat may affect patient visit attendance June-September
+
+RECOMMENDED USE CASES
+---------------------
+Ideal for:
+  • Trials requiring maximum patient volume
+  • Studies needing Hispanic patient representation
+  • South/Central U.S. regional hub
+  • Trials requiring fast startup and enrollment
+  • Multi-national trials (international patient access via Houston airports)
+
+================================================================================
+COMPARATIVE SUMMARY: MSK vs. MD ANDERSON
+================================================================================
+
+| Metric                        | MSK (NY)      | MD Anderson (TX) |
+|-------------------------------|---------------|------------------|
+| TNBC patients/year            | 650           | 780              |
+| Diversity index               | 42%           | 51%              |
+| Research coordinators         | 74            | 82               |
+| Time to first patient         | 42 days       | 38 days          |
+| Catchment population (90-min) | 18.4M         | 9.8M             |
+| Public transit access         | Excellent     | Limited          |
+| Cost of living (patient)      | Very High     | Moderate         |
+
+RECOMMENDATION:
+- For Northeast coverage + diversity + transit access → Choose MSK
+- For maximum volume + Hispanic representation + speed → Choose MD Anderson
+- Optimal strategy: Select BOTH as anchor sites for geographic diversity
+
+================================================================================
+NEXT STEPS & SITE SELECTION FRAMEWORK
+================================================================================
+
+HOW TO USE THIS DATA:
+---------------------
+1. IDENTIFY YOUR PRIORITIES
+   • Is patient volume your #1 constraint? → Focus on sites ranked 1-5
+   • Do you need specific demographic diversity? → Check Diversity Index
+   • Is geographic coverage important? → Balance Northeast, South, West Coast
+   • Do you have budget for multiple sites? → Select 3-5 from top 10
+
+2. VALIDATE AGAINST YOUR INCLUSION CRITERIA
+   • Match disease subtype (e.g., TNBC) to site-specific volumes
+   • Ensure sufficient Stage II/III patients if that's your target
+   • Check age distribution matches your study design
+
+3. ASSESS INFRASTRUCTURE NEEDS
+   • Complex trials (frequent imaging, biopsies) → Sites with robust facilities
+   • Multi-cohort trials → Sites with large coordinator staff
+   • Fast enrollment timelines → Sites with proven rapid activation
+
+4. BALANCE RISK
+   • Don't over-concentrate in one region (regulatory diversity risk)
+   • Mix high-volume sites with fast-enrollment sites
+   • Consider backup sites if budget allows
+
+ADDITIONAL RESEARCH AVAILABLE:
+-------------------------------
+This Executive Summary covers 2 of 50 sites. The Full Report ($0.04) includes:
+  • Detailed profiles for all 50 sites
+  • Cancer subtype-specific data (HER2+, EGFR+, etc.)
+  • Competitive trial landscape analysis
+  • Heat maps showing patient density
+  • Customizable site selection matrix
+
+================================================================================
+CONTACT & METHODOLOGY
+================================================================================
+
+For questions about this research:
+Dr. James Chen, Senior Partner
+McKinsey & Company, Healthcare Systems & Services Practice
+Email: james_chen@mckinsey.com
+
+METHODOLOGY NOTES:
+------------------
+• Patient volume data: Aggregated from hospital discharge records (HCUP
+  database), state cancer registries, and SEER incidence rates
+• Demographic data: Linked ZIP code-level census data to patient records
+• Infrastructure: Site surveys + publicly available institutional data
+• Trial performance: Site-reported metrics + ClinicalTrials.gov outcomes
+
+LIMITATIONS:
+• Data reflects 2019-2023 period; recent changes may not be captured
+• TNBC-specific volumes estimated using national subtype prevalence rates
+  (22-24%) applied to site-level breast cancer diagnoses
+• Insurance mix represents payer at admission, not longitudinal coverage
+
+================================================================================
+END OF EXECUTIVE SUMMARY
+Full Report (62 pages): Additional 48 sites + appendices
+================================================================================
