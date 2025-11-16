@@ -20,6 +20,7 @@ let eventSource = null;
 let totalBudget = 0.2;
 let researchStarted = false;
 let latestSummary = null;
+let activeModalSeller = null;
 
 const DEFAULT_QUESTION = 'Which 3 sites should host our Phase III oncology trial?';
 
@@ -39,6 +40,7 @@ async function fetchSellers() {
   sellers = data.sellers;
   sellers.forEach((seller) => sellerState.set(seller.id, { status: 'pending' }));
   renderSellers();
+  renderSummary();
 }
 
 function renderSellers() {
@@ -88,7 +90,10 @@ function updateBudget(spent, remaining) {
 function renderSummary() {
   if (latestSummary) {
     const recList = latestSummary.recommendations
-      .map((rec) => `<li><strong>${rec.site}</strong><p>${rec.rationale}</p></li>`)
+      .map(
+        (rec) =>
+          `<li><strong>${rec.site}</strong><p>${rec.rationale}</p><small>Sources: ${rec.source}</small></li>`
+      )
       .join('');
     const nextSteps = latestSummary.nextSteps.map((step) => `<li>${step}</li>`).join('');
     summaryContent.innerHTML = `
@@ -114,6 +119,16 @@ function renderSummary() {
   summaryContent.innerHTML = purchased.length
     ? `<ul>${purchased.join('')}</ul>`
     : '<p>No findings yet.</p>';
+}
+
+function renderThreadMessages(messages) {
+  if (!messages || !messages.length) {
+    modalBody.innerHTML = '<p>No transcript yet.</p>';
+    return;
+  }
+  modalBody.innerHTML = messages
+    .map((msg) => `<p><strong>${msg.role}:</strong> ${msg.text}</p>`)
+    .join('');
 }
 
 async function startResearch(payload) {
@@ -167,14 +182,28 @@ function handleEvent(event) {
         appendFeedEntry(`Purchased from ${event.data.sellerId} for $${event.data.purchase.amount.toFixed(2)}.`);
         const spent = [...sellerState.values()].reduce((sum, st) => sum + (st.purchase?.amount || 0), 0);
         updateBudget(spent, totalBudget - spent);
-        updateSummary();
+        renderSummary();
       }
       setSellerStatus(event.data.sellerId, event.data.status);
+      break;
+    case 'coordinator:summary_update':
+      latestSummary = event.data.summary;
+      renderSummary();
       break;
     case 'coordinator:done':
       appendFeedEntry('Research session complete.');
       startBtn.disabled = false;
       break;
+    case 'thread:message': {
+      const state = sellerState.get(event.data.sellerId) || { status: 'pending' };
+      state.messages = state.messages || [];
+      state.messages.push(event.data.message);
+      sellerState.set(event.data.sellerId, state);
+      if (activeModalSeller === event.data.sellerId) {
+        renderThreadMessages(state.messages);
+      }
+      break;
+    }
     default:
       break;
   }
@@ -189,20 +218,34 @@ function setSellerStatus(sellerId, status) {
 
 async function openThreadModal(sellerId, title) {
   if (!sessionId) return;
-  const res = await fetch(`/api/research/thread/${sessionId}/${sellerId}`);
-  if (!res.ok) {
-    alert('Thread not found yet.');
-    return;
-  }
-  const data = await res.json();
+  activeModalSeller = sellerId;
   modalTitle.textContent = `${title} transcript`;
-  modalBody.innerHTML = data.thread.transcript
-    .map((entry) => `<p><strong>${entry.role}:</strong> ${entry.text}</p>`)
-    .join('') || '<p>No messages yet.</p>';
   modal.classList.remove('hidden');
+  const state = sellerState.get(sellerId);
+  if (state?.messages?.length) {
+    renderThreadMessages(state.messages);
+  } else {
+    modalBody.innerHTML = '<p>Loading transcript...</p>';
+  }
+  const res = await fetch(`/api/research/thread/${sessionId}/${sellerId}`);
+  if (res.ok) {
+    const data = await res.json();
+    const threadMessages = data.thread.transcript || [];
+    const updated = sellerState.get(sellerId) || {};
+    updated.messages = threadMessages;
+    sellerState.set(sellerId, updated);
+    if (activeModalSeller === sellerId) {
+      renderThreadMessages(threadMessages);
+    }
+  } else if (!state?.messages?.length) {
+    modalBody.innerHTML = '<p>Transcript not available yet.</p>';
+  }
 }
 
-closeModalBtn.addEventListener('click', () => modal.classList.add('hidden'));
+closeModalBtn.addEventListener('click', () => {
+  modal.classList.add('hidden');
+  activeModalSeller = null;
+});
 startBtn.addEventListener('click', openStartModal);
 cancelStartBtn.addEventListener('click', closeStartModal);
 confirmStartBtn.addEventListener('click', () => {
@@ -211,12 +254,13 @@ confirmStartBtn.addEventListener('click', () => {
   const budget = Number.isFinite(budgetValue) ? budgetValue : totalBudget;
   totalBudget = budget;
   researchStarted = true;
+  latestSummary = null;
   closeStartModal();
   coordinatorFeed.innerHTML = '';
   sellerState = new Map();
   sellers.forEach((seller) => sellerState.set(seller.id, { status: 'pending' }));
   renderSellers();
-  summaryContent.innerHTML = '<p>No findings yet.</p>';
+  renderSummary();
   appendFeedEntry('Launching new research session...');
   startResearch({ question, budget });
 });

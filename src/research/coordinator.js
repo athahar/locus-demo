@@ -2,6 +2,7 @@ import { EventEmitter } from 'events';
 import { ResearchSession } from './state.js';
 import { SELLER_PROFILES } from './sellers.js';
 import { loadExcerpt, loadPrompt } from './content.js';
+import { sendPayment } from '../payment.js';
 
 const BUYER_ROLE = 'buyer';
 const SELLER_ROLE = 'seller';
@@ -11,23 +12,57 @@ function addTranscriptEntry(thread, role, text, status) {
   thread.transcript.push({ role, text, status });
 }
 
+function extractConfirmationId(paymentResult) {
+  if (!paymentResult) return null;
+  if (typeof paymentResult === 'string') {
+    const sanitized = paymentResult.replace(/\*/g, '').replace(/`/g, '');
+    const match =
+      sanitized.match(/Transaction ID[:#]?\s*([A-Za-z0-9-]+)/i) ||
+      sanitized.match(/transaction ID is[:\s`]*([A-Za-z0-9-]+)/i);
+    if (match) return match[1];
+  }
+  const candidates = [
+    paymentResult?.transaction_id,
+    paymentResult?.transactionId,
+    paymentResult?.transactionID,
+    paymentResult?.id,
+    paymentResult?.tx_hash,
+    paymentResult?.txHash,
+    paymentResult?.hash
+  ].filter(Boolean);
+  if (candidates.length > 0) {
+    return candidates[0];
+  }
+  if (typeof paymentResult === 'object') {
+    for (const value of Object.values(paymentResult)) {
+      if (typeof value === 'string') {
+        const match = value.match(/0x[a-f0-9]{64}/i);
+        if (match) return match[0];
+      }
+    }
+  }
+  return null;
+}
 
 function buildFeasibilitySummary(session) {
   const recommendations = [
     {
       site: 'Johns Hopkins – Baltimore, MD',
       rationale:
-        '100/100 compliance score from Deloitte, 210 TNBC patients per year in McKinsey demographics, and 2.8 patients/site/month enrollment velocity per Stanford benchmarks.'
+        '100/100 compliance score from Deloitte, 210 TNBC patients per year in McKinsey demographics, and 2.8 patients/site/month enrollment velocity per Stanford benchmarks.',
+      source: 'Patient Population Demographics, Site Regulatory Compliance History, Enrollment Rate Benchmarks'
     },
     {
       site: 'Dana-Farber Cancer Institute – Boston, MA',
       rationale:
-        'Gold-standard FDA record, 91% retention, strong Northeast diversity index, and fast time-to-first-patient.'
+        'Gold-standard FDA record, 91% retention, strong Northeast diversity index, and fast time-to-first-patient.',
+      source: 'Site Regulatory Compliance History, Enrollment Rate Benchmarks'
     },
     {
       site: 'UCSF Helen Diller – San Francisco, CA',
       rationale:
-        'West Coast coverage with perfect compliance, 54% diversity index, and above-average enrollment velocity.'
+        'West Coast coverage with perfect compliance, 54% diversity index, and above-average enrollment velocity.',
+      source: 'Patient Population Demographics, Site Regulatory Compliance History'
     }
   ];
 
@@ -172,6 +207,7 @@ export function runResearchSession(sessionId) {
 
       if (!session.budget.canSpend(price)) {
         thread.status = 'skipped';
+        console.log(`[Research] Skipping ${thread.id} due to insufficient budget.`);
         emitter.emit('event', {
           type: 'coordinator:negotiation_result',
           sessionId,
@@ -180,49 +216,55 @@ export function runResearchSession(sessionId) {
         continue;
       }
 
-      session.budget.recordSpend({ sellerId: thread.id, amount: price, description: thread.profile.documentTitle });
-      thread.status = 'purchased';
-      thread.purchase = {
-        amount: price,
-        transactionId: `${thread.id}-${Date.now()}`,
-        delivery: targetType === 'full' ? 'pdf' : 'excerpt'
-      };
+      console.log(`[Research] Sending payment to ${thread.profile.name} (${thread.profile.walletAddress}) for $${price.toFixed(2)}.`);
 
-      let excerptSnippet = null;
-      if (thread.purchase.delivery === 'excerpt') {
-        const excerpt = await loadExcerpt(thread.profile.excerptPath);
-        if (excerpt) {
-          excerptSnippet = excerpt.length > 1200 ? `${excerpt.slice(0, 1200)}...` : excerpt;
+      try {
+        const payment = await sendPayment({
+          to: thread.profile.walletAddress,
+          amount: price,
+          memo: thread.profile.documentTitle
+        });
+        console.log('[Research] Payment result:', JSON.stringify(payment, null, 2));
+        const confirmationId = extractConfirmationId(payment?.result) || `${thread.id}-${Date.now()}`;
+
+        session.budget.recordSpend({ sellerId: thread.id, amount: price, description: thread.profile.documentTitle });
+        thread.status = 'purchased';
+        thread.purchase = {
+          amount: price,
+          transactionId: confirmationId,
+          delivery: targetType === 'full' ? 'pdf' : 'excerpt'
+        };
+
+        let excerptSnippet = null;
+        if (thread.purchase.delivery === 'excerpt') {
+          const excerpt = await loadExcerpt(thread.profile.excerptPath);
+          if (excerpt) {
+            excerptSnippet = excerpt.length > 1200 ? `${excerpt.slice(0, 1200)}...` : excerpt;
+          }
         }
-      }
 
-      buildNegotiationTranscript(session, thread, thread.purchase, excerptSnippet);
+        buildNegotiationTranscript(session, thread, thread.purchase, excerptSnippet);
 
-      if (thread.purchase.delivery === 'excerpt') {
-        const excerpt = await loadExcerpt(thread.profile.excerptPath);
-        if (excerpt) {
-          thread.transcript.push({
-            role: 'seller',
-            text: `Excerpt delivered from ${thread.profile.name}:\n\n${excerpt}`
-          });
-          emitter.emit('event', {
-            type: 'thread:update',
-            sessionId,
-            data: { sellerId: thread.id, status: thread.status }
-          });
-        }
-      } else {
-        thread.transcript.push({
-          role: 'seller',
-          text: `Full report available at ${thread.profile.resourcePath}`
+        emitter.emit('event', {
+          type: 'coordinator:negotiation_result',
+          sessionId,
+          data: { sellerId: thread.id, status: thread.status, purchase: thread.purchase }
+        });
+      } catch (error) {
+        console.error('[Research] Payment error:', error);
+        thread.status = 'error';
+        addTranscriptEntry(
+          thread,
+          SYSTEM_ROLE,
+          `❌ Payment failed for ${thread.profile.name}: ${error.message || 'Unknown error'}`,
+          'error'
+        );
+        emitter.emit('event', {
+          type: 'coordinator:negotiation_result',
+          sessionId,
+          data: { sellerId: thread.id, status: 'error', reason: error.message || 'Payment failed' }
         });
       }
-
-      emitter.emit('event', {
-        type: 'coordinator:negotiation_result',
-        sessionId,
-        data: { sellerId: thread.id, status: thread.status, purchase: thread.purchase }
-      });
     }
 
     session.summary = buildFeasibilitySummary(session);
